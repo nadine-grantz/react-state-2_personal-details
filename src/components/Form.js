@@ -6,6 +6,14 @@ export default function Form() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const nameInput = event.target.name.value;
+    const emailInput = event.target.email.value;
+
+    setName(nameInput);
+    setEmail(emailInput);
+
+    event.target.email.value = "";
+    event.target.name.value = "";
   }
 
   return (
@@ -15,9 +23,10 @@ export default function Form() {
       onSubmit={handleSubmit}
     >
       <h2 id="user-details">Please enter your details here!</h2>
+      {name + " " + email}
       <label htmlFor="name">Name: </label>
       <input id="name" name="name" type="text" placeholder="John Doe" />
-      <label htmlFor="email">Email: </label>
+      <label htmlFor="email">Email:</label>
       <input id="email" name="email" type="email" placeholder="john@doe.com" />
       <button className="form__submit-button" type="submit">
         Submit
